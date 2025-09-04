@@ -1,1 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sena Barber</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #faf6f2;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d5329f9-9044-4960-81a1-a5f8aed9f532.png') no-repeat center center;
+            background-size: cover;
+            height: 60vh;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .appointment-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        .notification-permission {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 1000;
+            width: 300px;
+        }
+        .notification-permission button {
+            margin: 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ff6c3013-4955-4311-83e0-82a0613c0646.png" alt="Logo de la peluquería - Tijeras cruzadas con fondo negro" class="h-10">
+                <h1 class="text-2xl font-bold text-gray-800">Estilo Elegante</h1>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#servicios" class="text-gray-600 hover:text-purple-700 transition-all">Servicios</a>
+                <a href="#citas" class="text-gray-600 hover:text-purple-700 transition-all">Reservar Cita</a>
+                <a href="#clientes" class="text-gray-600 hover:text-purple-700 transition-all">Clientes</a>
+                <a href="#contacto" class="text-gray-600 hover:text-purple-700 transition-all">Contacto</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center text-center text-white">
+        <div>
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Tu mejor look, nuestra pasión</h2>
+            <p class="text-xl md:text-2xl mb-8">Profesionales dedicados a realzar tu belleza</p>
+            <a href="#citas" class="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-md text-lg font-semibold transition-all">Reservar cita</a>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Nuestros Servicios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Corte de Cabello -->
+                <div class="service-card bg-gray-50 p-6 rounded-lg shadow-md transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d8c34aee-180e-4ad5-a3b2-050c804a2ff7.png" alt="Corte de cabello moderno realizado por estilista profesional" class="w-full h-48 object-cover rounded mb-4">
+                    <h3 class="text-xl font-bold mb-2">Corte de Cabello</h3>
+                    <p class="text-gray-600 mb-4">Cortes personalizados según tu rostro y estilo de vida.</p>
+                    <span class="text-purple-700 font-bold">$U 1000 - $U 2000</span>
+                </div>
+                
+                <!-- Coloración -->
+                <div class="service-card bg-gray-50 p-6 rounded-lg shadow-md transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b18bc678-1b17-4b03-adcd-c418f9769b42.png" alt="Técnica de coloración capilar con mechas y reflejos profesionales" class="w-full h-48 object-cover rounded mb-4">
+                    <h3 class="text-xl font-bold mb-2">Coloración</h3>
+                    <p class="text-gray-600 mb-4">Desde tonos naturales hasta las últimas tendencias en color.</p>
+                    <span class="text-purple-700 font-bold">$60 - $120</span>
+                </div>
+                
+                <!-- Tratamientos -->
+                <div class="service-card bg-gray-50 p-6 rounded-lg shadow-md transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/37100037-d7c0-4389-ad2c-0b27c49f7654.png" alt="Tratamiento de keratina para cabello liso y saludable" class="w-full h-48 object-cover rounded mb-4">
+                    <h3 class="text-xl font-bold mb-2">Tratamientos Capilares</h3>
+                    <p class="text-gray-600 mb-4">Keratina, botox capilar y tratamientos para cabello dañado.</p>
+                    <span class="text-purple-700 font-bold">$40 - $100</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Citas -->
+    <section id="citas" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Reserva tu cita</h2>
+            <div class="max-w-2xl mx-auto appointment-form p-8 rounded-lg shadow-md">
+                <form id="appointmentForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nombre completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" required>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700">
+                        </div>
+                        <div>
+                            <label for="date" class="block text-gray-700 mb-2">Fecha</label>
+                            <input type="date" id="date" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" required>
+                        </div>
+                        <div>
+                            <label for="service" class="block text-gray-700 mb-2">Servicio</label>
+                            <select id="service" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="Corte de Cabello">Corte de Cabello</option>
+                                <option value="Coloración">Coloración</option>
+                                <option value="Tratamientos Capilares">Tratamientos Capilares</option>
+                                <option value="Peinado">Peinado</option>
+                                <option value="Maquillaje">Maquillaje</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="stylist" class="block text-gray-700 mb-2">Estilista preferido</label>
+                            <select id="stylist" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700">
+                                <option value="">Cualquier estilista</option>
+                                <option value="María García">María García</option>
+                                <option value="Carlos Martínez">Carlos Martínez</option>
+                                <option value="Ana López">Ana López</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="notes" class="block text-gray-700 mb-2">Notas adicionales</label>
+                            <textarea id="notes" rows="3" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="mt-6 bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-md text-lg font-semibold transition-all">Reservar ahora</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listado de Citas/Clientes -->
+    <section id="clientes" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Clientes Recientes</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Servicio</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estilista</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentsList" class="divide-y divide-gray-200">
+                        <!-- Las citas se cargarán aquí con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Equipo -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Nuestro Equipo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9b4342bb-2823-4a9b-acb5-ada76f843abd.png" alt="María García - Estilista profesional con 10 años de experiencia" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-bold mb-2">María García</h3>
+                    <p class="text-gray-600 mb-2">Especialista en coloración y tratamientos</p>
+                    <p class="text-sm text-gray-500">10 años de experiencia</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/40b4eebc-86be-4768-bf0c-a11c7e94f4bd.png" alt="Carlos Martínez - Barbero profesional especializado en cortes modernos" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-bold mb-2">Carlos Martínez</h3>
+                    <p class="text-gray-600 mb-2">Especialista en cortes modernos</p>
+                    <p class="text-sm text-gray-500">8 años de experiencia</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0ff700ba-4096-4353-be37-cf84e70b6c12.png" alt="Ana López - Peinados y maquillaje para eventos especiales" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-bold mb-2">Ana López</h3>
+                    <p class="text-gray-600 mb-2">Especialista en peinados y maquillaje</p>
+                    <p class="text-sm text-gray-500">6 años de experiencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <footer id="contacto" class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Estilo Elegante</h3>
+                    <p class="text-gray-400">Peluquería profesional dedicada a realzar tu belleza natural con los mejores productos y técnicas.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Horario</h3>
+                    <p class="text-gray-400">Lunes a Viernes: 9:00 AM - 12:30 PM / 2:30 PM - 7:00 PM</p>
+                    <p class="text-gray-400">Sábados: 9:00 AM - 1:00 PM</p>
+                    <p class="text-gray-400">Domingos: Cerrado</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contacto</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Av. 18 de Julio 1234, Montevideo
+                    </p>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fas fa-phone mr-2"></i> +598 99 123 456
+                    </p>
+                    <p class="text-gray-400 mb-4">
+                        <i class="fas fa-envelope mr-2"></i> info@estiloelegante.com
+                    </p>
+                    <a href="https://wa.me/59899123456" class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">
+                        <i class="fab fa-whatsapp mr-2"></i> Contactar por WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 Estilo Elegante. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="notification-permission" id="notificationPrompt">
+        ¿Permitir recordatorios de citas? 
+        <button onclick="enableNotifications()">Sí</button>
+        <button onclick="document.getElementById('notificationPrompt').style.display='none'">No</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Base de datos simple usando localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar storage si no existe
+            if (!localStorage.getItem('appointments')) {
+                localStorage.setItem('appointments', JSON.stringify([]));
+            }
+            
+            // Cargar citas existentes
+            loadAppointments();
+            
+            // Manejar formulario
+            const appointmentForm = document.getElementById('appointmentForm');
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const email = document.getElementById('email').value;
+                    const date = document.getElementById('date').value;
+                    const service = document.getElementById('service').value;
+                    const stylist = document.getElementById('stylist').value;
+                    const notes = document.getElementById('notes').value;
+                    
+                    // Crear nueva cita
+                    const newAppointment = {
+                        id: Date.now(),
+                        name,
+                        phone,
+                        email,
+                        date,
+                        service,
+                        stylist,
+                        notes,
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    // Guardar en localStorage
+                    const appointments = JSON.parse(localStorage.getItem('appointments'));
+                    appointments.push(newAppointment);
+                    localStorage.setItem('appointments', JSON.stringify(appointments));
+                    
+                    // Recargar lista
+                    loadAppointments();
+                    
+                    // Limpiar formulario
+                    appointmentForm.reset();
+                    
+                    // Mostrar mensaje de éxito más detallado
+                    alert(`✅ Cita confirmada para ${service} el ${formatDate(date)}\n\nRecibirás un recordatorio por WhatsApp 24 horas antes.\n\n¡Gracias por elegirnos!`);
+                    
+                    // Calcular fecha de recordatorio (1 día antes)
+                    const reminderDate = new Date(date);
+                    reminderDate.setDate(reminderDate.getDate() - 1);
+                    
+                    // Programar notificación
+                    if (Notification.permission === "granted") {
+                        setTimeout(() => {
+                            new Notification("Recordatorio de cita", {
+                                body: `No olvides tu cita para ${service} mañana a las ${new Date(date).toLocaleTimeString('es-UY', {hour: '2-digit', minute:'2-digit'})}`,
+                                icon: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2ed9dfb5-aed0-4d2c-819c-922357e040cf.png"
+                            });
+                            
+                            // Enviar mensaje de WhatsApp automático
+                            const phoneNumber = '59899123456';
+                            const whatsappMessage = `Hola ${name}, recordatorio de tu cita para ${service} mañana a las ${new Date(date).toLocaleTimeString('es-UY', {hour: '2-digit', minute:'2-digit'})}. Por favor confirmar asistencia.`;
+                            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+                        }, reminderDate - Date.now());
+                    }
+                });
+            }
+        });
+        
+        function loadAppointments() {
+            const appointments = JSON.parse(localStorage.getItem('appointments'));
+            const appointmentsList = document.getElementById('appointmentsList');
+            
+            if (appointmentsList) {
+                appointmentsList.innerHTML = '';
+                
+                if (appointments.length === 0) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-500">No hay citas registradas</td>
+                    `;
+                    appointmentsList.appendChild(row);
+                    return;
+                }
+                
+                // Ordenar por fecha (más reciente primero)
+                appointments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                
+                // Mostrar las 10 más recientes
+                const recentAppointments = appointments.slice(0, 10);
+                
+                recentAppointments.forEach(appointment => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap">${appointment.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${appointment.service}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${formatDate(appointment.date)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${appointment.stylist || '-'}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <button onclick="deleteAppointment(${appointment.id})" class="text-red-600 hover:text-red-800 transition-all">
+                                Eliminar
+                            </button>
+                        </td>
+                    `;
+                    appointmentsList.appendChild(row);
+                });
+            }
+        }
+        
+        function deleteAppointment(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
+                let appointments = JSON.parse(localStorage.getItem('appointments'));
+                appointments = appointments.filter(app => app.id !== id);
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+                loadAppointments();
+            }
+        }
+        
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('es-ES', options);
+        }
+
+        function enableNotifications() {
+            Notification.requestPermission().then(permission => {
+                document.getElementById('notificationPrompt').style.display = 'none';
+                if (permission === "granted") {
+                    alert('¡Gracias! Te enviaremos recordatorios de tus citas.');
+                }
+            });
+        }
+
+        // Show notification prompt on page load if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            if (Notification.permission === "default") {
+                document.getElementById('notificationPrompt').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
 
